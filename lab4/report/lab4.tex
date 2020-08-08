@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\input{../../info/preamble.tex}
+
+\begin{document}
+
+\initreport{4}{08.08.2020}
+
+\section{Тема работы}
+Знаки и строки
+
+\section{Цель работы}
+Научиться работать с литерами (знаками) и строками при помощи функций обработки
+строк и общих функций работы с последовательностями.
+
+\section{Задание (вариант №3)}
+Запрограммировать на языке Коммон Лисп функцию с двумя параметрами:
+\begin{itemize}
+\item substr - искомая подстрока,
+\item source - исходная строка.
+\end{itemize}
+Функция должна подсчитывать число вхождений substr в source.
+Если имеются "пересекающиеся" вхождения, то считается только одно из них.
+
+Пример:
+\begin{lstlisting}
+  (count-substring "abcd" "12abcd 345 abcd678") => 2
+  (count-substring "abab" "12ababab 345 abab 78") => 2
+\end{lstlisting}
+
+\section{Оборудование студента}
+\mypc
+
+\section{Программное обеспечение}
+VIM + утилита clisp из репозиториев дистрибутива.
+
+\section{Идея, метод, алгоритм}
+\section{Сценарий выполнения работы}
+\section{Распечатка программы и её результаты}
+
+\subsection{Исходный код}
+\listsource{..}{lab4.lisp}
+\listsource{..}{main.lisp}
+
+\subsection{Результаты работы}
+\lstinline[language=sh]{clisp -i lab4.lisp main.lisp > log.lisp}
+\listsource{..}{log.lisp}
+
+\section{Дневник отладки}
+\noindent
+\begin{tabularx}{\linewidth}{|c|X|X|X|}
+\hline
+Дата & Событие & Действие по исправлению & Примечание \\
+\hline
+08/08/2020 & 
+Очень много раз цикл становился бесконечным, пока я не нашёл описание when &
+Убрал условие окончания цикла по достижению конца строки&
+Не надо было пытаться писать на лиспе как на СИ\\
+\hline
+\end{tabularx}
+
+\section{Замечания автора по существу работы}
+
+\section{Выводы}
+
+\end{document}
