@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\input{../../info/preamble.tex}
+
+\begin{document}
+
+\initreport{5}{08.08.2020}
+
+\section{Тема работы}
+Обобщённые функции, методы и классы объектов
+
+\section{Цель работы}
+Научиться определять простейшие классы, порождать экземпляры классов,
+считывать и изменять значения слотов, научиться определять обобщённые
+функции и методы.
+
+\section{Задание (вариант №13)}
+\noindent
+Дан экземпляр класса triangle, причем все вершины треугольника могут
+быть заданы как декартовыми координатами (экземплярами класса cart),
+так и полярными (экземплярами класса polar).
+
+Задание: Определить обычную функцию равносторонний-p, возвращающую T,
+если треугольник с такими вершинами является равносторонним.
+
+\begin{lstlisting}
+(setq tri (make-instance 'triangle
+           :1 (make-instance 'cart-или-polar ...)
+           :2 (make-instance 'cart-или-polar ...)
+           :3 (make-instance 'cart-или-polar ...)))
+
+(defun равносторонний-p (tri)
+  ...)
+\end{lstlisting}
+
+\section{Оборудование студента}
+\mypc
+
+\section{Программное обеспечение}
+VIM + утилита clisp из репозиториев дистрибутива.
+
+\section{Идея, метод, алгоритм}
+\section{Сценарий выполнения работы}
+\section{Распечатка программы и её результаты}
+
+\subsection{Исходный код}
+\listsource{..}{lab5.lisp}
+\listsource{..}{main.lisp}
+
+\subsection{Результаты работы}
+\lstinline{clisp -i lab3.lisp main.lisp > log.lisp}
+\listsource{..}{log.lisp}
+
+\section{Дневник отладки}
+\noindent
+\begin{tabularx}{\linewidth}{|c|X|X|X|}
+\hline
+Дата & Событие & Действие по исправлению & Примечание \\
+\hline
+\end{tabularx}
+
+\section{Замечания автора по существу работы}
+
+\section{Выводы}
+
+\end{document}
+
