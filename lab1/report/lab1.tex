@@ -1,77 +1,43 @@
 \documentclass[12pt]{article}
-
-\usepackage[utf8x]{inputenc}
-\usepackage[T1, T2A]{fontenc}
-\usepackage{fullpage}
-\usepackage{multicol,multirow}
-\usepackage{tabularx}
-\usepackage{ulem}
-\usepackage{listings}
-\usepackage[english,russian]{babel}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{indentfirst}
-\usepackage{amsmath}
-\usepackage{amssymb}
-
-\usepackage{titlesec}
-
-\titleformat{\section}
-  {\normalfont\Large\bfseries}{\thesection.}{0.3em}{}
-
-\titleformat{\subsection}
-  {\normalfont\large\bfseries}{\thesubsection.}{0.3em}{}
-
-\titlespacing{\section}{0pt}{*2}{*2}
-\titlespacing{\subsection}{0pt}{*1}{*1}
-\titlespacing{\subsubsection}{0pt}{*0}{*0}
-\lstloadlanguages{Lisp}
-\lstset{extendedchars=false,
-	breaklines=true,
-	breakatwhitespace=true,
-	keepspaces = true,
-	tabsize=2
-}
+\input{../../info/preamble.tex}
 
 \begin{document}
 
-
-\section*{Отчет по лабораторной работе №\,2 
-по курсу \guillemotleft Функциональное программирование\guillemotright}
-\begin{flushright}
-Студент группы 8О-308 МАИ \textit{Пупкин Вася}, \textnumero 3 по списку \\
-\makebox[7cm]{Контакты: {\tt NOBODY@NOWHERE.ORG} \hfill} \\
-\makebox[7cm]{Работа выполнена: 24.03.2014 \hfill} \\
-\ \\
-Преподаватель: Иванов ИВАН ИВАНЫЧ, доц. каф. 806 \\
-\makebox[7cm]{Отчет сдан: \hfill} \\
-\makebox[7cm]{Итоговая оценка: \hfill} \\
-\makebox[7cm]{Подпись преподавателя: \hfill} \\
-
-\end{flushright}
+\initreport{1}{08.08.2020}
 
 \section{Тема работы}
-Списки в Common Lisp.
+Примитивные функции и особые операторы Коммон Лисп.
 
 \section{Цель работы}
-Научиться производить операции над списками.
+Научиться вводить S-выражения в Лисп-систему, определять переменные и функции, работать с условными операторами, работать с числами, используя схему линейной и древовидной рекурсии.
 
-\section{Задание (вариант №...)}
-Описать функцию {\tt mapset (x, f)}, аргументом которой является список {\tt x}, рассматриваемый как множества, а результатом применения --- множество, представленное в виде списка, который можно получить применением {\tt f} к каждому элементу {\tt x}. Порядок элементов в списке, рассматриваемом как множество, не имеет значения.
+\section{Задание (вариант №8)}
+Запрограммируйте на языке Коммон Лисп функцию с четырьмя параметрами --
+действительными числами $a$, $b$, $c$, $d$.
+Функция должна возвращать четыре значения с помощью {\tt values}:
+
+Если $a \leq b \leq c \leq d$, то вместо всех чисел вернуть их квадраты.
+
+Если $a > b > c > d$, то вернуть все числа без изменения.
+
+В противном случае вернуть наибольшее из них.
 
 \section{Оборудование студента}
-Процессор Intel Core i3-3220 4\,@\,3.3GHz, память: 8192Gb, разрядность системы: 64.
+\mypc
 
 \section{Программное обеспечение}
-ОС Windows 8.1, среда LispWorks Personal Edition 6.1.1
+VIM + утилита clisp из репозиториев дистрибутива.
 
 \section{Идея, метод, алгоритм}
-Функция {\tt mapset} рекурсивна и работает следующим образом:
+
+Функция {\tt four-sorted} нерекурсивна и работает следующим образом:
 \begin{itemize}
 \setlength{\itemsep}{-1mm} % уменьшает расстояние между элементами списка
-\item если вызвана с пустым списком, то вернет пустой список, иначе
-\item если результат применения {\tt f} к голове списка не содержится в {\tt mapset} от хвоста списка, вернуть конкатенацию {\tt f} от головы списка и {\tt mapset} от хвоста списка, иначе
-\item вернуть {\tt mapset} от хвоста списка.
+\item Если переданные аргументы находятся в порядке неубывания, то вернутся
+квадраты переданных чисел.
+\item Если переданные аргументы находятся в порядке убывания, то вернутся
+переданные числа без изменений.
+\item Иначе вернётся максимальное из четырёх чисел.
 \end{itemize}
 
 \section{Сценарий выполнения работы}
@@ -79,22 +45,29 @@
 \section{Распечатка программы и её результаты}
 
 \subsection{Исходный код}
-\lstinputlisting{../main.lisp}
+\listsource{..}{lab1.lisp}
+\listsource{..}{main.lisp}
 
 \subsection{Результаты работы}
-\lstinputlisting{./log2.lisp}
+\listsource{..}{log.lisp}
 
 \section{Дневник отладки}
-\begin{tabular}{|c|c|c|c|}
+\noindent
+\begin{tabularx}{\linewidth}{|c|X|X|X|}
 \hline
 Дата & Событие & Действие по исправлению & Примечание \\
 \hline
-\end{tabular}
+07/08/2020 & Всегда возвращалось максимальное число & Добавлена ветка {\tt else} в оператор {\tt cond} & Забыл, что значение последнего выражения это возвращаемое значение функции \\
+\hline
+\end{tabularx}
 
 \section{Замечания автора по существу работы}
-...
+Программа работает тривиально, но свои функции выполняет. Удалось избежать дублирования кода за счёт
+дополнительной функции {\tt compare}.
 
 \section{Выводы}
-Программа работает за линейное время и память. Определенная функция работает схоже со встроенной {\tt mapcar}; отличие в том, что {\tt mapcar} возвращает список, а не множество.
+Я познакомился с ещё одним диалектом LISP (предыдущий был scheme). По сравнению с остальными языками
+синтаксис кажется немного неудобным, но по факту не сильно мешает, так как сейчас многие знакомы с
+синтаксисом лямбда-выражений.
 
 \end{document}

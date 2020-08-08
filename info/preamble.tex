@@ -1,0 +1,103 @@
+\usepackage[utf8x]{inputenc}
+\usepackage[T1, T2A]{fontenc}
+\usepackage{fullpage}
+\usepackage{multicol, multirow}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{listings}
+\usepackage[english, russian]{babel}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{indentfirst}
+\usepackage{noindentafter}
+\usepackage{nonfloat}
+\usepackage{ulem}
+\usepackage{fancyhdr}
+% \usepackage{courier}
+% \usepackage{FiraMono}
+\usepackage{color}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+
+\parindent=1cm
+
+\linespread{1}
+\pgfplotsset{compat=1.16}
+\newcommand{\se}[1]{\section*{\bf #1}}
+
+\newcommand{\listsource}[2]{
+	\subsection*{\textbf{#2}}
+	{\footnotesize
+	\lstinputlisting[language=C++]{#1/#2}
+	}
+}
+
+\lstdefinestyle{empty}{language=c++,
+	basicstyle=\scriptsize,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	breaklines=true,
+	escapechar=@,
+	numbers=none,
+	frame=none,
+	escapeinside={\%*}{*)},
+	breakatwhitespace=false % переносить строки только если есть пробел
+}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=lisp,
+  numbers=left,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customc}
+
+\pgfplotsset{compat=1.17}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection.}{0.3em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection.}{0.3em}{}
+
+\titlespacing{\section}{0pt}{*2}{*2}
+\titlespacing{\subsection}{0pt}{*1}{*1}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\lstloadlanguages{Lisp}
+\lstset{extendedchars=false,
+	breaklines=true,
+	breakatwhitespace=true,
+	keepspaces = true,
+	tabsize=2
+}
+
+\newcommand{\initreport}[2]{
+	\section*{Отчет по лабораторной работе №\,#1\\
+	по курсу \guillemotleft Функциональное программирование\guillemotright}
+	\begin{flushright}
+	Студент группы 8О-308 МАИ \textit{Милько Павел}, \textnumero 14 по списку \\
+	\makebox[7cm]{Контакты: {\tt p.milko1999@yandex.ru} \hfill} \\
+	\makebox[7cm]{Работа выполнена: #2 \hfill} \\
+	\ \\
+	Преподаватель: Иванов Дмитрий Анатольевич, доц. каф. 806 \\
+	\makebox[7cm]{Отчет сдан: \hfill} \\
+	\makebox[7cm]{Итоговая оценка: \hfill} \\
+	\makebox[7cm]{Подпись преподавателя: \hfill} \\
+	\end{flushright}
+}
+
+\newcommand{\mypc}{
+	Процессор 8-Core AMD Ryzen 7 3700X\,@\,3.6GHz, память: 32Gb, разрядность системы: 64.
+}

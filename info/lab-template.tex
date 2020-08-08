@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+
+\usepackage{fullpage}
+\usepackage{multicol,multirow}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection.}{0.3em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection.}{0.3em}{}
+
+\titlespacing{\section}{0pt}{*2}{*2}
+\titlespacing{\subsection}{0pt}{*1}{*1}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\usepackage{listings}
+\lstloadlanguages{Lisp}
+\lstset{extendedchars=false,
+	breaklines=true,
+	breakatwhitespace=true,
+	keepspaces = true,
+	tabsize=2
+}
+\begin{document}
+
+
+\section*{Отчет по лабораторной работе №\,2 
+по курсу \guillemotleft Функциональное программирование\guillemotright}
+\begin{flushright}
+Студент группы 8О-308 МАИ \textit{Пупкин Вася}, \textnumero 3 по списку \\
+\makebox[7cm]{Контакты: {\tt NOBODY@NOWHERE.ORG} \hfill} \\
+\makebox[7cm]{Работа выполнена: 24.03.2014 \hfill} \\
+\ \\
+Преподаватель: Иванов ИВАН ИВАНЫЧ, доц. каф. 806 \\
+\makebox[7cm]{Отчет сдан: \hfill} \\
+\makebox[7cm]{Итоговая оценка: \hfill} \\
+\makebox[7cm]{Подпись преподавателя: \hfill} \\
+
+\end{flushright}
+
+\section{Тема работы}
+Списки в Common Lisp.
+
+\section{Цель работы}
+Научиться производить операции над списками.
+
+\section{Задание (вариант №...)}
+Описать функцию {\tt mapset (x, f)}, аргументом которой является список {\tt x}, рассматриваемый как множества, а результатом применения --- множество, представленное в виде списка, который можно получить применением {\tt f} к каждому элементу {\tt x}. Порядок элементов в списке, рассматриваемом как множество, не имеет значения.
+
+\section{Оборудование студента}
+Процессор Intel Core i3-3220 4\,@\,3.3GHz, память: 8192Gb, разрядность системы: 64.
+
+\section{Программное обеспечение}
+ОС Windows 8.1, среда LispWorks Personal Edition 6.1.1
+
+\section{Идея, метод, алгоритм}
+Функция {\tt mapset} рекурсивна и работает следующим образом:
+\begin{itemize}
+\setlength{\itemsep}{-1mm} % уменьшает расстояние между элементами списка
+\item если вызвана с пустым списком, то вернет пустой список, иначе
+\item если результат применения {\tt f} к голове списка не содержится в {\tt mapset} от хвоста списка, вернуть конкатенацию {\tt f} от головы списка и {\tt mapset} от хвоста списка, иначе
+\item вернуть {\tt mapset} от хвоста списка.
+\end{itemize}
+
+\section{Сценарий выполнения работы}
+
+\section{Распечатка программы и её результаты}
+
+\subsection{Исходный код}
+\lstinputlisting{./lab2.lisp}
+
+\subsection{Результаты работы}
+\lstinputlisting{./log2.lisp}
+
+\section{Дневник отладки}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Дата & Событие & Действие по исправлению & Примечание \\
+\hline
+\end{tabular}
+
+\section{Замечания автора по существу работы}
+...
+
+\section{Выводы}
+Программа работает за линейное время и память. Определенная функция работает схоже со встроенной {\tt mapcar}; отличие в том, что {\tt mapcar} возвращает список, а не множество.
+
+\end{document}
