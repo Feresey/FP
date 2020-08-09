@@ -31,7 +31,7 @@
 (setf equal-polar (make-instance 'triangle
   :1 (make-instance 'polar :radius 0   :angle 0)
   :2 (make-instance 'polar :radius 0.5 :angle 0)
-  :3 (make-instance 'polar :radius 0.5 :angle (* pi (/ 3 4)))
+  :3 (make-instance 'polar :radius 0.5 :angle (/ pi 3 ))
 ))
 
 
