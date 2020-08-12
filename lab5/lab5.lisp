@@ -59,8 +59,10 @@
     :radius (sqrt (+ (pow2 (cart-x c)) (pow2 (cart-y c))))
     :angle
     (cond
+      ; кажется одно из этих условий избыточное
       ( (and x-is-null y-is-null) 0)
       ( y-is-null 0)
+
       ( (and (not y-is-null) (not x-is-null)) (atan (/ (cart-y c) (cart-x c))))
       ; Точка на оси y. Радиус известен, надо определиться с направлением.
       ( (and (not y-is-null) x-is-null)

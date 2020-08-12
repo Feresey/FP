@@ -6,3 +6,18 @@
       count cur-pos
     )
 )
+
+(defun count-substring-recursive (substr source)
+  (setf cur-pos (search substr source))
+  (cond
+    (cur-pos
+      (1+
+        (count-substring-recursive
+          substr
+          (subseq source (+ cur-pos (length substr) ))
+        )
+      )
+    )
+    (t 0)
+  )
+)
